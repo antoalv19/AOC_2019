@@ -7,14 +7,13 @@ def fuel_req(mass):
     i = 0
     tot = 0
     while i < len(mass):
-       tot = round(mass[i] / 3) - 2
+       tot += math.floor(mass[i] / 3) - 2
        i = i + 1
-       tot += tot
-    print(tot)
+    return tot
 
 df = pd.read_csv(r"C:\Users\antonio.alvino\Desktop\AOC_1.csv", header= None)
 
 df["tot"] = df[0].apply(lambda x: math.floor(x/3) - 2)
 
-print(df["tot"].sum())
+print(df["tot"].sum(), fuel_req(df[0]))
 
